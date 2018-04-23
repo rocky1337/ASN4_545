@@ -27,22 +27,6 @@ void movieEvent(Movie m) {
   m.read();
 }
 
-//changes the speed of the movie mousewheel up increases, down decreases speed
-//void mouseWheel(MouseEvent event) {
-//  float e = event.getCount();
-//  if (playSpeed < 2.0) {
-//    if (playSpeed > .01) {
-//      println(playSpeed);
-//      if (e == -1.0) {
-//        playSpeed += .01;
-//        m.speed(playSpeed);
-//      } else if (e == 1.0) {
-//        playSpeed -= .01;
-//        m.speed(playSpeed);
-//      }
-//    }
-//  }
-//}
 
 void mouseWheel(MouseEvent event) {
   float e = event.getCount();
@@ -50,13 +34,11 @@ void mouseWheel(MouseEvent event) {
     if (e == 1.0) {
       playSpeed -= .01;
       m.speed(playSpeed);
-      println(playSpeed);
     }
   
     if (e == -1.0) {
       playSpeed += .01;
       m.speed(playSpeed);
-      println(playSpeed);
     }
   }
   }
