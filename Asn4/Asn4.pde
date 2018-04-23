@@ -4,16 +4,20 @@ String vidName = "Ready-Player-One.mp4";
 Movie m;
 //variable to play speed to make it dynamic
 float playSpeed = 1.0;
+String arrow = "-->";
+String tokens = ":,";
+String[] lines;
 boolean paused = true, reverse = true;
 
 void setup() {
   background(0);
   textAlign(BOTTOM);
-  text(playSpeed, 50, 50);
+  text(playSpeed, 640, 360);
   size(640, 360);
   frameRate(30);
   m = new Movie(this, vidName);
   m.play();
+  m.loop();
 }
 
 void draw() {
@@ -23,32 +27,34 @@ void draw() {
 void movieEvent(Movie m) {
   m.read();
 }
+
 //changes the speed of the movie mousewheel up increases, down decreases speed
 void mouseWheel(MouseEvent event) {
   float e = event.getCount();
   if (playSpeed < 2.0) {
     if (playSpeed > .01) {
+      println(playSpeed);
       if (e == -1.0) {
         playSpeed += .01;
         m.speed(playSpeed);
-        println(playSpeed);
+        //text(playSpeed, 600, 300);
       } else if (e == 1.0) {
         playSpeed -= .01;
         m.speed(playSpeed);
-        print(playSpeed);
       }
     }
   }
+  text(playSpeed, 600, 300);
 }
 void keyReleased() {
   //toggles reverse playback
   if (key == 'r') {
     if (reverse) {
-     reverse = false;
-     m.speed(-1);
+      reverse = false;
+      m.speed(-1);
     } else {
-     reverse = true;
-     m.speed(1);
+      reverse = true;
+      m.speed(1);
     }
   }
   //toggle pause
