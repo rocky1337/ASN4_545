@@ -10,7 +10,6 @@ String[] lines;
 boolean paused = true, reverse = true;
 
 void setup() {
-  background(0);
   size(640, 360);
   frameRate(30);
   m = new Movie(this, vidName);
@@ -19,6 +18,7 @@ void setup() {
 }
 
 void draw() {
+  background(0);
   image(m, 0, 0);
   text(playSpeed, 600, 330);
 }
@@ -46,18 +46,19 @@ void movieEvent(Movie m) {
 
 void mouseWheel(MouseEvent event) {
   float e = event.getCount();
-  if (playSpeed < 2.0 || playSpeed > .01) {
+  if (playSpeed < 2.0 && playSpeed > .01) {
     if (e == 1.0) {
       playSpeed -= .01;
       m.speed(playSpeed);
       println(playSpeed);
     }
-  }
+  
     if (e == -1.0) {
       playSpeed += .01;
       m.speed(playSpeed);
       println(playSpeed);
     }
+  }
   }
 
 void keyReleased() {
