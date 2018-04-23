@@ -11,8 +11,6 @@ boolean paused = true, reverse = true;
 
 void setup() {
   background(0);
-  textAlign(BOTTOM);
-  text(playSpeed, 640, 360);
   size(640, 360);
   frameRate(30);
   m = new Movie(this, vidName);
@@ -22,6 +20,7 @@ void setup() {
 
 void draw() {
   image(m, 0, 0);
+  text(playSpeed, 600, 330);
 }
 
 void movieEvent(Movie m) {
@@ -29,23 +28,38 @@ void movieEvent(Movie m) {
 }
 
 //changes the speed of the movie mousewheel up increases, down decreases speed
+//void mouseWheel(MouseEvent event) {
+//  float e = event.getCount();
+//  if (playSpeed < 2.0) {
+//    if (playSpeed > .01) {
+//      println(playSpeed);
+//      if (e == -1.0) {
+//        playSpeed += .01;
+//        m.speed(playSpeed);
+//      } else if (e == 1.0) {
+//        playSpeed -= .01;
+//        m.speed(playSpeed);
+//      }
+//    }
+//  }
+//}
+
 void mouseWheel(MouseEvent event) {
   float e = event.getCount();
-  if (playSpeed < 2.0) {
-    if (playSpeed > .01) {
+  if (playSpeed < 2.0 || playSpeed > .01) {
+    if (e == 1.0) {
+      playSpeed -= .01;
+      m.speed(playSpeed);
       println(playSpeed);
-      if (e == -1.0) {
-        playSpeed += .01;
-        m.speed(playSpeed);
-        //text(playSpeed, 600, 300);
-      } else if (e == 1.0) {
-        playSpeed -= .01;
-        m.speed(playSpeed);
-      }
     }
   }
-  text(playSpeed, 600, 300);
-}
+    if (e == -1.0) {
+      playSpeed += .01;
+      m.speed(playSpeed);
+      println(playSpeed);
+    }
+  }
+
 void keyReleased() {
   //toggles reverse playback
   if (key == 'r') {
