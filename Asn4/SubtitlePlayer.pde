@@ -5,6 +5,7 @@ class SubtitlePlayer {
   IntList Stime = new IntList();
   IntList Etime = new IntList();
   StringList Subtitles = new StringList();
+  int currentSub = 0;
 
   SubtitlePlayer(String fname) {
     //Load the file into the lines array
@@ -66,5 +67,15 @@ class SubtitlePlayer {
       sub += " " + subtitle.get(i);
     }
     Subtitles.append(sub);
+  }
+  
+  
+  String getSubs(float currentTime) {
+   //check start and end, if between from the arrays display subtitle
+   if (currentTime > Stime.get(currentSub) && currentTime < Etime.get(currentSub)) return Subtitles.get(currentSub);
+   else if (currentTime >= Stime.get(currentSub + 1) && currentSub < Subtitles.size()) currentSub++;
+   return "";
+    
+    
   }
 }

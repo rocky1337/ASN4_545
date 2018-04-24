@@ -19,10 +19,14 @@ void setup() {
 }
 
 void draw() {
+  float currentTime = m.time() * 1000;
   background(0);
   image(m, 0, 0);
+  textAlign(RIGHT);
   text(playSpeed, 600, 360);
-  //need to call getSubs();
+  String Subtitle = s.getSubs(currentTime);
+  textAlign(LEFT);
+  text(Subtitle, 30, 300);
 }
 
 void movieEvent(Movie m) {
@@ -34,12 +38,11 @@ void movieEvent(Movie m) {
 
 void mouseWheel(MouseEvent event) {
   float e = event.getCount();
-  if (playSpeed < 2.0 && playSpeed > .01) {
+  if (playSpeed < 2.01 && playSpeed > .00) {
     if (e == 1.0) {
       playSpeed -= .01;
       m.speed(playSpeed);
     }
-
     if (e == -1.0) {
       playSpeed += .01;
       m.speed(playSpeed);
