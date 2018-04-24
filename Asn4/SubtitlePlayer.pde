@@ -57,10 +57,14 @@ class SubtitlePlayer {
     //printArray(endTimeArr);
     int t1 = parseTime(startTimeArr);  //Start time
     int t2 = parseTime(endTimeArr);    //End time
+    Stime.append(t1);
+    Etime.append(t2);
+    String sub = "";
     println("Start time:", t1, "End time", t2);
     //Print the text lines in the subtitle StringList
     for (int i = 1; i < subtitle.size(); i++) {
-      println(subtitle.get(i));
+      sub += " " + subtitle.get(i);
     }
+    Subtitles.append(sub);
   }
 }
