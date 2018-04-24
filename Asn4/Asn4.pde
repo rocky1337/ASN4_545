@@ -1,6 +1,7 @@
 import processing.video.*;
 //file name for video
 String vidName = "Ready-Player-One.mp4";
+String subName = "Ready-Player-One-Trailer-HD-English-French-Subtitles.srt";
 Movie m;
 //variable to play speed to make it dynamic
 float playSpeed = 1.0;
@@ -17,7 +18,7 @@ void setup() {
 void draw() {
   background(0);
   image(m, 0, 0);
-  text(playSpeed, 600, 330);
+  text(playSpeed, 600, 360);
 }
 
 void movieEvent(Movie m) {
