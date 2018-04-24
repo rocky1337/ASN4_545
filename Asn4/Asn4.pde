@@ -4,9 +4,6 @@ String vidName = "Ready-Player-One.mp4";
 Movie m;
 //variable to play speed to make it dynamic
 float playSpeed = 1.0;
-String arrow = "-->";
-String tokens = ":,";
-String[] lines;
 boolean paused = true, reverse = true;
 
 void setup() {
@@ -26,6 +23,8 @@ void draw() {
 void movieEvent(Movie m) {
   m.read();
 }
+
+
 
 
 void mouseWheel(MouseEvent event) {
