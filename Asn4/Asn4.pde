@@ -16,7 +16,6 @@ void setup() {
   s = new SubtitlePlayer(subName);
   m.play();
   m.loop();
- 
 }
 
 void draw() {
@@ -40,13 +39,13 @@ void mouseWheel(MouseEvent event) {
       playSpeed -= .01;
       m.speed(playSpeed);
     }
-  
+
     if (e == -1.0) {
       playSpeed += .01;
       m.speed(playSpeed);
     }
   }
-  }
+}
 
 void keyReleased() {
   //toggles reverse playback
