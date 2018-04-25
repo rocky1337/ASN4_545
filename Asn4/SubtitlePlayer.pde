@@ -68,14 +68,15 @@ class SubtitlePlayer {
     }
     Subtitles.append(sub);
   }
-  
-  
+
+
   String getSubs(float currentTime) {
-   //check start and end, if between from the arrays display subtitle
-   if (currentTime > Stime.get(currentSub) && currentTime < Etime.get(currentSub)) return Subtitles.get(currentSub);
-   else if (currentTime >= Stime.get(currentSub + 1) && currentSub < Subtitles.size()) currentSub++;
-   return "";
-    
-    
+    //check start and end, if between from the arrays display subtitle
+    if (currentTime > Stime.get(currentSub) && currentTime < Etime.get(currentSub)) {
+      return Subtitles.get(currentSub);
+    } else if (currentTime >= Stime.get(currentSub + 1) && currentSub < Subtitles.size()) {
+      currentSub++;
+    }
+    return "";
   }
 }

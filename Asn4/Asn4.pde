@@ -1,3 +1,12 @@
+//ASN4 video player with subtitles
+//use r to toggle reverse
+//use spacebar to toggle pause
+//use mousewheel to increase or decrease the play speed.
+//Possible error, when scrolling up or down when you get to the threshold of 2 and .01
+//it will go over by .01 and the playspeed.
+
+
+
 import processing.video.*;
 //file name for video
 String vidName = "Ready-Player-One.mp4";
@@ -22,10 +31,9 @@ void draw() {
   float currentTime = m.time() * 1000;
   background(0);
   image(m, 0, 0);
-  textAlign(RIGHT);
-  text(playSpeed, 600, 360);
+  text(playSpeed, 570, 360);
   String Subtitle = s.getSubs(currentTime);
-  textAlign(LEFT);
+  textSize(15);
   text(Subtitle, 30, 300);
 }
 
