@@ -15,7 +15,7 @@ Movie m;
 SubtitlePlayer s;
 //variable to play speed to make it dynamic
 float playSpeed = 1.0;
-boolean paused = true, reverse = true;
+boolean paused = true, reverse = true, reverseSubs = false;
 
 
 void setup() {
@@ -63,9 +63,11 @@ void keyReleased() {
   if (key == 'r') {
     if (reverse) {
       reverse = false;
+      reverseSubs = true;
       m.speed(-1);
     } else {
       reverse = true;
+      reverseSubs = false;
       m.speed(1);
     }
   }
