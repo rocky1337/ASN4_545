@@ -72,16 +72,14 @@ class SubtitlePlayer {
 
   String getSubs(float currentTime) {
     //check start and end, if between from the arrays display subtitle
-    if (reverseSubs == false && currentTime > Stime.get(currentSub) && currentTime < Etime.get(currentSub)) {
+    //forward subtitles
+    if (currentTime > Stime.get(currentSub) && currentTime < Etime.get(currentSub)) {
       return Subtitles.get(currentSub);
-    } else if (currentTime >= Stime.get(currentSub + 1) && currentSub < Subtitles.size()) {
+    } else if (reverseSubs == false && currentTime >= Stime.get(currentSub + 1) && currentSub < Subtitles.size()) {
       currentSub++;
+    } else if (reverseSubs == true && currentTime <= Etime.get(currentSub - 1) && currentSub > 0) {
+      currentSub--;
     }
-    //if (reverseSubs == true && currentTime < Etime.get(currentSub) && currentTime > Stime.get(currentSub)) {
-    //  return Subtitles.get(currentSub);
-    //} else if (currentTime <= Etime.get(currentSub + 1) && currentSub < Subtitles.size()) {
-    //  currentSub--;
-    //}
     return "";
   }
 }
